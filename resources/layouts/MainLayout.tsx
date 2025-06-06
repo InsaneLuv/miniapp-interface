@@ -20,6 +20,7 @@ const MainLayout = ({
       <link rel="icon" type="image/x-icon" href={favicon} />
       <title>{title}</title>
       <header></header>
+
       <main>{children}</main>
       <footer></footer>
     </>

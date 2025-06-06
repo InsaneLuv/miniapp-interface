@@ -356,6 +356,9 @@ class AppSettings:
     SECRET_KEY: str = field(
         default_factory=get_env("SECRET_KEY", binascii.hexlify(os.urandom(32)).decode(encoding="utf-8")),
     )
+    BOT_TOKEN: str = field(
+        default_factory=get_env("BOT_TOKEN", ""),
+    )
     """Application secret key."""
     NAME: str = field(default_factory=lambda: "app")
     """Application name."""

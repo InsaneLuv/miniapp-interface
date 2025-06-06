@@ -6,8 +6,8 @@ const PageNotFound: React.FC = () => {
 
   return (
     <MainLayout
-      title="Litestar Application - 404"
-      description="Litestar Application - Page Not Found"
+      title="Mini404"
+      description="Такой страницы не существут."
       keywords="404"
     >
       <div className="w-full h-screen flex items-center justify-center px-2 md:px-0">
@@ -18,13 +18,15 @@ const PageNotFound: React.FC = () => {
             className="h-[300px] w-auto"
           />
           <div>
-            <p className="mt-6 text-sm font-semibold text-black">404 error</p>
+            <p className="mt-6 text-sm font-semibold text-black">Ошибка 404</p>
             <h1 className="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">
-              Вы заблудились?
+              <div>
+                Кажется эта страница
+                <br />
+                ещё не готова.
+              </div>
             </h1>
-            <p className="mt-4 text-gray-500">
-              Текст потом придумаю
-            </p>
+            <p className="mt-4 text-gray-500">Зайдите попозже</p>
             <div className="mt-6 flex items-center space-x-3">
               <button
                 onClick={() => navigate("/")}

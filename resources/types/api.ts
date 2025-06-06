@@ -1,29 +1,37 @@
 export namespace API {
-  export namespace CargoList {
-    export type ResponseBody = {
-      id: number
-      status: boolean
-      route: {
-        from: string
-        fromDesc: string
-        to: string
-        toDesc: string
-      }
-      loadingDate: string
-      unloadingDate: string
-      cargo: {
-        list: string[]
-        pallet: string
-        weight: string
-      }
-      veh: {
-        type: string
-        tonnage: number
-      }
-      platform: string
-      cost: string
-    }[]
+export namespace CargoList {
+
+  export interface RoutePointAccord {
+    planed_date: string | null
+    operation_type: string
+    warehouse_name: string | null
+    region_name: string | null
+    city_name: string
   }
+
+  export interface ResponseItem {
+    external_id: number            
+    number: string                 
+    update_dt: string               
+    client_name: string
+    service_name: string
+    departure_city: string
+    destination_city: string
+    departure_region: string
+    destination_region: string
+    client_sum_without_nds: number
+    client_sum_with_nds: number
+    date_start: string | null      
+    date_end: string | null    
+    transport_type: string
+    route_points: Array<RoutePointAccord | null>
+    trade_status: string          
+    trading_time: string      
+    currency: string | null
+  }
+
+  export type ResponseBody = ResponseItem[]
+}
 
 
 

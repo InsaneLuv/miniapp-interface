@@ -22,6 +22,26 @@ if TYPE_CHECKING:
 
 
 T = TypeVar("T")
+from aiogram import Bot, Dispatcher
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
+
+from contextlib import asynccontextmanager
+
+
+
+@asynccontextmanager
+async def lifespan(app_config: AppConfig):
+    settings = get_settings()
+    bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    dp = Dispatcher()
+
+    await bot.set_webhook(url='https://svc.ru.tuna.am/',
+                          allowed_updates=dp.resolve_used_update_types(),
+                          drop_pending_updates=True)
+    yield
+
+    await bot.delete_webhook()
 
 
 class ApplicationCore(InitPluginProtocol, CLIPluginProtocol):

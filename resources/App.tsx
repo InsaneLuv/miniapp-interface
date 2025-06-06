@@ -1,32 +1,21 @@
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom"
-// pages imports
-import ProtectedRoutes from "@/lib/protected-routes"
-import Placeholder from "@/pages/Placeholder"
-import Login from "@/pages/access/Login"
-import Register from "@/pages/access/Register"
-import Home from "@/pages/Home"
+import EfkoPage from "@/pages/clients/Efko"
 import PageNotFound from "@/pages/PageNotFound"
-import { useAuth } from "@/contexts/AuthProvider"
-import { useEffect } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
+import TruckerPage from "./pages/clients/Trucker"
+import { MainNav } from "./components/main-nav"
 
 const App: React.FC = () => {
-  const navigate = useNavigate()
-  const { auth } = useAuth()
-  const { pathname } = useLocation()
-
-  useEffect(() => {
-    if (auth?.token && (pathname === "/login" || pathname === "/register")) {
-      navigate("/")
-    }
-  }, [auth, pathname])
-
   return (
-    <ThemeProvider defaultTheme="light" storageKey="dma-ui-theme">
+    <ThemeProvider defaultTheme="system" storageKey="dma-ui-theme">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<EfkoPage />} />
+        <Route path="/Efko" element={<EfkoPage />} />
+        <Route path="/Trucker" element={<TruckerPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+
+      <MainNav />
     </ThemeProvider>
   )
 }
